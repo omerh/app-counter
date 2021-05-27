@@ -20,4 +20,8 @@ services:
   redis:
     image: redis:4-alpine
     volumes:
-      - "/data"
+      - "local-redis:/data"
+
+volumes: 
+  local-redis:
+    

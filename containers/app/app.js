@@ -21,7 +21,7 @@ app.get('/', function (req, res, next) {
             logger.error(err)
             return next(err);
         }
-        res.send('Hello docker swarm meetup v2 This page has been viewed ' + counter + ' tiems <br> Hostname: ' + os.hostname() );
+        res.send('Hello from app-counter<br>Page hits: ' + counter + '<br>Hostname: ' + os.hostname());
         logger.info(counter + ' times');
     });
 });

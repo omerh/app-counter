@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:  
+  webserver:
+    build: ./containers/webserver/
+    ports:
+      - "8080:80"
+    depends_on: 
+      - nodeapp
+      - redis
+    
+  nodeapp:
+    build: ./containers/app/
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on: 
+      - redis
+    
+  redis:
+    image: redis:4-alpine
+    volumes:
+      - "/data"

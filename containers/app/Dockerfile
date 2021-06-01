@@ -4,14 +4,12 @@ FROM node:16.2.0-alpine
 # For build with no dev dependency
 ENV NODE_ENV production
 
-RUN apk update \
-    && apk add curl \
-    && mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-RUN npm install express redis pino
+RUN npm install
 
 USER nobody
 CMD [ "node", "app.js" ]
